@@ -92,13 +92,12 @@
   <div class="container">
     <div class="section-header">
       <h2>Gallery</h2>
-      <span class="mono">Photos · drag &amp; drop to preview</span>
+      <span class="mono">Photos</span>
     </div>
-    <div class="gallery drop-zone">
+    <div class="gallery">
       <div class="gallery-item"><img src="images/brewbot/IMG_0980.jpeg" alt="BrewBot"></div>
       <div class="gallery-item"><img src="images/brewbot/IMG_1009.jpeg" alt="BrewBot"></div>
       <div class="gallery-item"><img src="images/brewbot/IMG_1035.jpeg" alt="BrewBot"></div>
-      </div>
     </div>
   </div>
 </section>
@@ -107,15 +106,10 @@
   <div class="container">
     <div class="section-header">
       <h2>3D Models</h2>
-      <span class="mono">STL · drag &amp; drop or load preset</span>
+      <span class="mono">STL · interactive viewer</span>
     </div>
-    <p class="sub">Interactive viewer — click and drag to rotate, scroll to zoom.</p>
-    <div class="model-viewer drop-zone" id="stl-viewer" data-models="models/brewbot/V1.stl">
-    <div class="model-viewer drop-zone" id="stl-viewer" data-models="models/brewbot/internals.stl">
-      <div class="model-empty">
-        <span class="mono">No model loaded</span>
-        <p>Drop a .stl file here, or place files in <code>/models/brewbot/</code> and update <code>data-models</code> on the viewer element.</p>
-      </div>
+    <p class="sub">Click and drag to rotate, scroll to zoom. Switch between models below.</p>
+    <div class="model-viewer" id="stl-viewer" data-models="models/brewbot/V1.stl,models/brewbot/internals.stl">
       <div class="model-controls">
         <button id="btn-rotate">Auto-Rotate</button>
         <button id="btn-wireframe">Wireframe</button>

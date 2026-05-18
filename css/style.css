@@ -476,55 +476,6 @@ nav a.active::after {
 
 .gallery-item:hover img { transform: scale(1.03); }
 
-.gallery-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: var(--ink-mute);
-  padding: 2rem;
-  border: 2px dashed var(--rule);
-  background: transparent;
-}
-
-.gallery-empty .mono {
-  margin-bottom: 0.75rem;
-  color: var(--accent);
-}
-
-.gallery-empty p {
-  font-size: 0.9rem;
-  color: var(--ink-mute);
-}
-
-/* Drag-over states */
-.drop-zone {
-  position: relative;
-  transition: background 0.2s, border-color 0.2s;
-}
-
-.drop-zone.dragover {
-  background: rgba(184, 69, 31, 0.06);
-  border-color: var(--accent) !important;
-}
-
-.drop-zone.dragover::after {
-  content: 'Drop to preview';
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  pointer-events: none;
-  background: rgba(244, 241, 234, 0.7);
-}
-
 /* =========================================================
    3D Model Viewer
    ========================================================= */
@@ -610,21 +561,6 @@ nav a.active::after {
   background: var(--ink);
   color: var(--paper);
 }
-
-.model-empty {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: rgba(255, 255, 255, 0.7);
-  text-align: center;
-  padding: 2rem;
-}
-
-.model-empty .mono { color: var(--accent-soft); margin-bottom: 0.75rem; }
-.model-empty p { font-size: 0.9rem; max-width: 360px; line-height: 1.6; }
 
 /* =========================================================
    Lightbox

@@ -119,21 +119,12 @@
   <div class="container">
     <div class="section-header">
       <h2>Gallery</h2>
-      <span class="mono">Photos · drag &amp; drop to preview</span>
+      <span class="mono">Photos</span>
     </div>
-    <div class="gallery drop-zone">
-      <!--
-        DROP YOUR IMAGES HERE (filename pattern: 1.jpg, 2.jpg, etc. in /images/subspectra/)
-        OR uncomment the lines below as you add files.
-      -->
+    <div class="gallery">
       <div class="gallery-item"><img src="images/subspectra/IMG_7048.jpeg" alt="SubSpectra"></div>
       <div class="gallery-item"><img src="images/subspectra/IMG_7186.jpeg" alt="SubSpectra"></div>
       <div class="gallery-item"><img src="images/subspectra/IMG_7197.jpeg" alt="SubSpectra"></div>
-      
-      <div class="gallery-empty">
-        <span class="mono">Gallery empty</span>
-        <p>Drop images here to preview them in your browser, or add files to <code>/images/subspectra/</code> and update this page's HTML to make them permanent.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -143,14 +134,10 @@
   <div class="container">
     <div class="section-header">
       <h2>3D Models</h2>
-      <span class="mono">STL · drag &amp; drop or load preset</span>
+      <span class="mono">STL · interactive viewer</span>
     </div>
-    <p class="sub">Interactive viewer — click and drag to rotate, scroll to zoom. Drop any <code>.stl</code> file onto the viewer to preview it.</p>
-    <div class="model-viewer drop-zone" id="stl-viewer" data-models="models/subspectra/SubSpectra v4.stl">
-      <div class="model-empty">
-        <span class="mono">No model loaded</span>
-        <p>Drop a .stl file here, or place files in <code>/models/subspectra/</code> and update <code>data-models</code> on the viewer element.</p>
-      </div>
+    <p class="sub">Click and drag to rotate, scroll to zoom.</p>
+    <div class="model-viewer" id="stl-viewer" data-models="models/subspectra/SubSpectra_v4.stl">
       <div class="model-controls">
         <button id="btn-rotate">Auto-Rotate</button>
         <button id="btn-wireframe">Wireframe</button>

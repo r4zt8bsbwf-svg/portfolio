@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SubSpectra — Jacob</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Jacob<span class="dot">.</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="container-narrow">
+    <div class="crumbs">
+      <a href="index.html">Index</a>
+      <span class="sep">/</span>
+      <a href="index.html#work">Work</a>
+      <span class="sep">/</span>
+      <span class="mono" style="color: var(--ink)">01 · SubSpectra</span>
+    </div>
+    <h1>SubSpectra</h1>
+    <p class="tagline">An autonomous water tank inspection ROV — bringing live video, environmental data, and precise control into confined submerged environments.</p>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="mono">Role</span>
+        <span class="value">Systems integration, firmware, UI</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Stack</span>
+        <span class="value">Raspberry Pi · Arduino · Python · OpenCV · PySide6</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Type</span>
+        <span class="value">Capstone / Long-form</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Status</span>
+        <span class="value">Completed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="container-narrow">
+    <h2>The problem</h2>
+    <p>Inspecting the inside of municipal and industrial water tanks usually means sending divers into confined, dark, sometimes hazardous spaces. SubSpectra was built to make that unnecessary — a remotely operated vehicle that gives operators live video, environmental data, and fine maneuverability without anyone ever getting wet.</p>
+
+    <div class="callout">
+      The hard part wasn't any single subsystem. It was making real-time motor control, networking, computer vision, sensor calibration, and waterproofing all cooperate in one chassis.
+    </div>
+
+    <h2>Architecture</h2>
+    <p>The compute is intentionally split across two boards, each doing what it's good at:</p>
+
+    <h3>Raspberry Pi 5 — high-level</h3>
+    <ul>
+      <li>Camera streaming and OpenCV processing pipeline</li>
+      <li>Ethernet communication with the surface UI</li>
+      <li>Sensor aggregation, telemetry processing, logging</li>
+      <li>High-level control logic and mode management</li>
+    </ul>
+
+    <h3>Arduino Mega — real-time</h3>
+    <ul>
+      <li>ESC signal generation and thruster PWM output</li>
+      <li>Watchdog safety systems</li>
+      <li>Lower-level sensor polling</li>
+    </ul>
+
+    <p>The two communicate over USB serial using structured JSON packets. The split exists because Linux on the Pi is not deterministic and motor control needs precise timing — if the Pi lags or crashes, the Arduino keeps PWM stable.</p>
+
+    <h2>Propulsion</h2>
+    <p>Eight thrusters: four large units at roughly 30° for translation and yaw, four vertical units at the corners for depth, stabilization, and roll/pitch correction. Driven through ESCs with servo-style PWM around 1500 μs neutral, 1900 μs forward, 1100 μs reverse. The control layout means the large motors handle operator-driven movement while the smaller verticals auto-level the vehicle in the background.</p>
+
+    <h2>Sensors</h2>
+    <ul>
+      <li><strong>MS5837-30BA</strong> for pressure and depth, zeroed at the surface</li>
+      <li><strong>DS18B20</strong> waterproof temperature sensor over OneWire</li>
+      <li><strong>DFRobot</strong> pH, TDS, and conductivity sensors — each with their own calibration routines, reference solutions, and noise filtering</li>
+    </ul>
+
+    <h2>Vision</h2>
+    <p>An OAK-D Lite stereo camera streams live video to the operator UI over Ethernet, with an OpenCV processing pipeline for future computer vision expansion. Getting this stable meant working through USB bandwidth limitations, Pi undervoltage events under camera load, autofocus quirks, frame latency, and compression tradeoffs.</p>
+
+    <h2>Operator UI</h2>
+    <p>The custom interface is built in PySide6 with PyQtGraph OpenGL for the 3D vehicle visualization. It shows live video, sensor overlays, motor outputs, latency, and operating mode (manual, stabilize, angle hold, inspection). A simulation mode lets the UI run without hardware connected — useful for iterating on layout without setting up the full rig.</p>
+
+    <h2>Safety & reliability</h2>
+    <ul>
+      <li>Watchdog timeout — thrusters stop automatically if comms drop</li>
+      <li>Line fuses and main fuse protection, tested under load</li>
+      <li>Telemetry validation flags missing sensors, invalid readings, and out-of-range values</li>
+    </ul>
+
+    <h2>Mechanical</h2>
+    <p>Waterproof PVC enclosure, acrylic viewing window, waterproof cable glands, externally mounted ESCs, PETG structural components, 3D-printed mounts. A lot of the fabrication time went into epoxy sealing, pressure resistance, waterproof connector consolidation, and routing cables so heat could still escape.</p>
+
+    <h2>What this project taught me</h2>
+    <p>Most of the real work was at the seams — Pi power instability under camera load, ESC calibration, Ethernet latency, sensor calibration drift, IMU stabilization tuning, PWM debugging with an oscilloscope. Each problem touched two or three disciplines at once. The biggest takeaway: if you can't reason about hardware, firmware, networking, mechanical, and power as one system, you can't ship a vehicle that works underwater.</p>
+  </div>
+</section>
+
+<!-- ========== GALLERY ========== -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Gallery</h2>
+      <span class="mono">Photos · drag &amp; drop to preview</span>
+    </div>
+    <div class="gallery drop-zone">
+      <!--
+        DROP YOUR IMAGES HERE (filename pattern: 1.jpg, 2.jpg, etc. in /images/subspectra/)
+        OR uncomment the lines below as you add files.
+      -->
+      <div class="gallery-item"><img src="images/subspectra/1.jpg" alt="SubSpectra"></div>
+      <div class="gallery-item"><img src="images/subspectra/2.jpg" alt="SubSpectra"></div>
+      <div class="gallery-item"><img src="images/subspectra/3.jpg" alt="SubSpectra"></div>
+      
+      <div class="gallery-empty">
+        <span class="mono">Gallery empty</span>
+        <p>Drop images here to preview them in your browser, or add files to <code>/images/subspectra/</code> and update this page's HTML to make them permanent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 3D MODELS ========== -->
+<section class="model-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>3D Models</h2>
+      <span class="mono">STL · drag &amp; drop or load preset</span>
+    </div>
+    <p class="sub">Interactive viewer — click and drag to rotate, scroll to zoom. Drop any <code>.stl</code> file onto the viewer to preview it.</p>
+    <div class="model-viewer drop-zone" id="stl-viewer" data-models="models/subspectra/chassis.stl">
+      <div class="model-empty">
+        <span class="mono">No model loaded</span>
+        <p>Drop a .stl file here, or place files in <code>/models/subspectra/</code> and update <code>data-models</code> on the viewer element.</p>
+      </div>
+      <div class="model-controls">
+        <button id="btn-rotate">Auto-Rotate</button>
+        <button id="btn-wireframe">Wireframe</button>
+        <button id="btn-reset">Reset View</button>
+      </div>
+    </div>
+    <div class="model-list"></div>
+  </div>
+</section>
+
+<section class="container-narrow">
+  <div class="project-nav">
+    <a href="index.html#work">
+      <span class="mono">← Back</span>
+      <span class="title">All work</span>
+    </a>
+    <a href="brewbot.html" class="next">
+      <span class="mono">Next →</span>
+      <span class="title">BrewBot</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="mono">© 2026 · Jacob</span>
+    <div class="links">
+        <a href="mailto:jacobryan764@icloud.com">Email</a>
+        <a href="https://github.com/r4zt8bsbwf-svg" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/jacob-robinson-77b7b838a/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close">Close ✕</button>
+  <img src="" alt="">
+</div>
+
+<!-- Three.js for STL viewer -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrewBot — Jacob</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Jacob<span class="dot">.</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="container-narrow">
+    <div class="crumbs">
+      <a href="index.html">Index</a>
+      <span class="sep">/</span>
+      <a href="index.html#work">Work</a>
+      <span class="sep">/</span>
+      <span class="mono" style="color: var(--ink)">02 · BrewBot</span>
+    </div>
+    <h1>BrewBot</h1>
+    <p class="tagline">An automated beverage preparation and dispensing machine — embedded control, custom mechanical assemblies, and programmable recipe logic.</p>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="mono">Role</span>
+        <span class="value">CAD, firmware, fabrication</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Stack</span>
+        <span class="value">Arduino · Fusion 360 · Servos · Peristaltic pumps</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Type</span>
+        <span class="value">End-to-end build</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Status</span>
+        <span class="value">Completed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="container-narrow">
+    <h2>The idea</h2>
+    <p>BrewBot is a beverage automation platform built to simulate a commercial drink-mixing system — consistent recipes, repeatable output, and automated cleaning. End-to-end: from CAD model to printed parts to wired controller to working hardware.</p>
+
+    <div class="callout">
+      I liked this project because it touched everything — 3D modeling, part selection, 3D printing, wiring, coding, debugging. Full-stack mechanical engineering.
+    </div>
+
+    <h2>Mechanical</h2>
+    <ul>
+      <li>Servo-actuated valves</li>
+      <li>Peristaltic pumps for measured fluid flow</li>
+      <li>3D-printed servo mounts and dispensing assemblies</li>
+      <li>Routed tubing with backflow prevention</li>
+    </ul>
+    <p>The printed parts were modeled in Fusion 360 with attention to alignment tolerance, leak reduction, repeatability, and maintenance access — pieces you can disassemble without breaking the print.</p>
+
+    <h2>Control system</h2>
+    <p>A microcontroller drives valve timing, pump activation, dispensing order, and cleaning routines. The firmware runs as a state machine that steps through each recipe: open the valve, dispense for a programmed duration, stop flow, move to the next ingredient, then run a cleaning cycle when the recipe completes.</p>
+
+    <h2>What had to work</h2>
+    <ul>
+      <li>Consistent fluid output across ingredients with different viscosities</li>
+      <li>Reliable servo movement without binding or drift</li>
+      <li>Preventing overflow and leaks at every joint</li>
+      <li>Repeatable timing accuracy for predictable recipes</li>
+    </ul>
+
+    <h2>What it taught me</h2>
+    <p>Mechanical tolerances stack faster than you'd expect — a 0.2 mm gap in one mount becomes a leak two parts later. Pump timing calibration drifts with tubing fatigue, so the cleaning cycle wasn't optional, it was structural. The whole project was an exercise in integrating embedded firmware, CAD, fabrication, fluid systems, and electrical design into something that could actually run a recipe end to end.</p>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Gallery</h2>
+      <span class="mono">Photos · drag &amp; drop to preview</span>
+    </div>
+    <div class="gallery drop-zone">
+      <div class="gallery-empty">
+        <span class="mono">Gallery empty</span>
+        <p>Drop images here to preview, or add files to <code>/images/brewbot/</code> and uncomment the gallery items in this HTML.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="model-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>3D Models</h2>
+      <span class="mono">STL · drag &amp; drop or load preset</span>
+    </div>
+    <p class="sub">Interactive viewer — click and drag to rotate, scroll to zoom. Drop any <code>.stl</code> file onto the viewer to preview it.</p>
+    <div class="model-viewer drop-zone" id="stl-viewer" data-models="models/brewbot/dispenser.stl">
+      <div class="model-empty">
+        <span class="mono">No model loaded</span>
+        <p>Drop a .stl file here, or place files in <code>/models/brewbot/</code> and update <code>data-models</code> on the viewer element.</p>
+      </div>
+      <div class="model-controls">
+        <button id="btn-rotate">Auto-Rotate</button>
+        <button id="btn-wireframe">Wireframe</button>
+        <button id="btn-reset">Reset View</button>
+      </div>
+    </div>
+    <div class="model-list"></div>
+  </div>
+</section>
+
+<section class="container-narrow">
+  <div class="project-nav">
+    <a href="subspectra.html">
+      <span class="mono">← Previous</span>
+      <span class="title">SubSpectra</span>
+    </a>
+    <a href="shiftopt.html" class="next">
+      <span class="mono">Next →</span>
+      <span class="title">ShiftOpt</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="mono">© 2026 · Jacob</span>
+    <div class="links">
+        <a href="mailto:jacobryan764@icloud.com">Email</a>
+        <a href="https://github.com/r4zt8bsbwf-svg" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/jacob-robinson-77b7b838a/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close">Close ✕</button>
+  <img src="" alt="">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/STLLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

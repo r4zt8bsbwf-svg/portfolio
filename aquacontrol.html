@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AquaControl — Jacob</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Jacob<span class="dot">.</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="container-narrow">
+    <div class="crumbs">
+      <a href="index.html">Index</a>
+      <span class="sep">/</span>
+      <a href="index.html#work">Work</a>
+      <span class="sep">/</span>
+      <span class="mono" style="color: var(--ink)">04 · AquaControl</span>
+    </div>
+    <h1>AquaControl</h1>
+    <p class="tagline">An embedded aquarium automation platform — relay control, scheduling logic, and a manual override switchboard in one centralized controller.</p>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="mono">Role</span>
+        <span class="value">Electrical design, firmware</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Stack</span>
+        <span class="value">Microcontroller · Relays · Embedded C</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Type</span>
+        <span class="value">Embedded systems</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Status</span>
+        <span class="value">Deployed</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="container-narrow">
+    <h2>The idea</h2>
+    <p>Freshwater aquariums need a half-dozen subsystems running on schedules — lighting, filtration, heater, air pump, CO₂, feeding. AquaControl consolidates them under one embedded controller with both automatic schedules and a manual override switchboard for maintenance and emergencies.</p>
+
+    <div class="callout">
+      The dual-mode design — automatic schedules with a physical override switchboard — turned out to be the most important decision in the whole project.
+    </div>
+
+    <h2>Two operating modes</h2>
+    <h3>Automatic</h3>
+    <p>The controller runs lights, pumps, heaters, and timed subsystems on programmed schedules with conditional activation.</p>
+
+    <h3>Manual override</h3>
+    <p>A physical switchboard gives direct subsystem control — flipping any switch overrides the automation for that channel. Useful for emergency overrides, maintenance, or testing hardware without writing code.</p>
+
+    <h2>Electrical</h2>
+    <ul>
+      <li>Relay-driven switching for AC-powered equipment</li>
+      <li>Discrete logic for the manual override interface</li>
+      <li>Embedded microcontroller as the central scheduler</li>
+    </ul>
+    <p>The relay bank controls pumps, lighting circuits, heating elements, and aeration. Higher-current switching needed careful attention to noise, isolation, and contact ratings.</p>
+
+    <h2>Firmware</h2>
+    <ul>
+      <li>Timed automation cycles per subsystem</li>
+      <li>Conditional activation based on schedule state</li>
+      <li>Safety logic to prevent simultaneous conflicting subsystems</li>
+      <li>User override handling that defers to physical switches</li>
+    </ul>
+
+    <h2>Hardware integrated</h2>
+    <p>Pumps, heaters, lighting circuits, aeration systems, automated feeders, and the manual control switches. The design priorities throughout were reliability, electrical safety, ease of maintenance, and being able to expand later without re-architecting the firmware.</p>
+
+    <h2>What it taught me</h2>
+    <p>Relay noise will fight you the entire build — debouncing, snubbers, isolation, all of it. Safely switching higher-current AC devices from a low-voltage microcontroller is not just a wiring problem, it's a layout problem. And designing for manual override from day one — rather than bolting it on — is what made the system actually trustworthy around live animals.</p>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Gallery</h2>
+      <span class="mono">Photos · drag &amp; drop to preview</span>
+    </div>
+    <div class="gallery drop-zone">
+      <div class="gallery-empty">
+        <span class="mono">Gallery empty</span>
+        <p>Drop photos of the controller, wiring, or switchboard here. Add files to <code>/images/aquacontrol/</code> for permanent display.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-narrow">
+  <div class="project-nav">
+    <a href="shiftopt.html">
+      <span class="mono">← Previous</span>
+      <span class="title">ShiftOpt</span>
+    </a>
+    <a href="index.html#work" class="next">
+      <span class="mono">Back to →</span>
+      <span class="title">Index</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="mono">© 2026 · Jacob</span>
+    <div class="links">
+        <a href="mailto:jacobryan764@icloud.com">Email</a>
+        <a href="https://github.com/r4zt8bsbwf-svg" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/jacob-robinson-77b7b838a/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close">Close ✕</button>
+  <img src="" alt="">
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

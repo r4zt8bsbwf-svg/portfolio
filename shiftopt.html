@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShiftOpt — Jacob</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo">Jacob<span class="dot">.</span></a>
+    <nav>
+      <ul>
+        <li><a href="index.html#work">Work</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="project-hero">
+  <div class="container-narrow">
+    <div class="crumbs">
+      <a href="index.html">Index</a>
+      <span class="sep">/</span>
+      <a href="index.html#work">Work</a>
+      <span class="sep">/</span>
+      <span class="mono" style="color: var(--ink)">03 · ShiftOpt</span>
+    </div>
+    <h1>ShiftOpt</h1>
+    <p class="tagline">Constraint-based workforce scheduling — reduced manual schedule generation from ~2 hours to under 5 minutes.</p>
+
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="mono">Role</span>
+        <span class="value">Sole developer</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Stack</span>
+        <span class="value">C++ · OOP · Constraint-based assignment</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Type</span>
+        <span class="value">Operations / algorithms</span>
+      </div>
+      <div class="meta-item">
+        <span class="mono">Status</span>
+        <span class="value">In use</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prose">
+  <div class="container-narrow">
+    <h2>The problem</h2>
+    <p>Scheduling 75 employees by hand is the kind of task that takes hours, produces inconsistent results, and quietly creates staffing gaps in high-priority positions. ShiftOpt replaces that process with a constraint-based assignment engine written in C++.</p>
+
+    <div class="callout">
+      Manual: ~2 hours per schedule. ShiftOpt: under 5 minutes. Same constraints, fewer conflicts.
+    </div>
+
+    <h2>What it optimizes for</h2>
+    <ul>
+      <li>Employee availability and time windows</li>
+      <li>Position qualifications and skill levels</li>
+      <li>Minimum staffing requirements per shift</li>
+      <li>Position priority rankings (critical roles first)</li>
+      <li>Consistency — keep employees in the same role rather than rotating unnecessarily</li>
+    </ul>
+
+    <h2>Position-based logic</h2>
+    <p>Different roles need different staffing levels at different times. IPOS might need 2 workers continuously; drinks only needs 1; drive-thru staffing extends later than front counter. The scheduler supports variable staffing counts per role with time-dependent requirements, so a single run produces a schedule that respects every constraint at once.</p>
+
+    <h2>Architecture</h2>
+    <ul>
+      <li>Object-oriented C++ — employee classes, availability maps, position priority systems, shift blocks</li>
+      <li>Constraint evaluation functions that score candidate assignments</li>
+      <li>Dynamic scheduling arrays/vectors for the working set</li>
+    </ul>
+
+    <p>The algorithm fills high-priority positions first, then iteratively assigns remaining staff while minimizing future bottlenecks. After each placement it recalculates coverage gaps and remaining available labor before moving on.</p>
+
+    <h2>Where it's going</h2>
+    <p>The current version is functional but improvements I'm working toward: a menu-driven management UI, editable employee profiles persisted to disk, support for the full ~75-employee database, easier per-location position customization, and automated conflict resolution when constraints are over-specified.</p>
+
+    <h2>What it taught me</h2>
+    <p>Real-world scheduling isn't a clean optimization problem — it's a stack of soft preferences and hard constraints that contradict each other. The interesting work is in deciding which to relax and in what order. C++ was the right call: predictable performance, full control over data structures, and the codebase stays readable as constraints accumulate.</p>
+  </div>
+</section>
+
+<section class="gallery-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Screenshots</h2>
+      <span class="mono">UI &amp; output · drag &amp; drop to preview</span>
+    </div>
+    <div class="gallery drop-zone">
+      <div class="gallery-empty">
+        <span class="mono">Gallery empty</span>
+        <p>Drop screenshots of the CLI, schedule output, or code here to preview. Add files to <code>/images/shiftopt/</code> for permanent display.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container-narrow">
+  <div class="project-nav">
+    <a href="brewbot.html">
+      <span class="mono">← Previous</span>
+      <span class="title">BrewBot</span>
+    </a>
+    <a href="aquacontrol.html" class="next">
+      <span class="mono">Next →</span>
+      <span class="title">AquaControl</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <span class="mono">© 2026 · Jacob</span>
+    <div class="links">
+        <a href="mailto:jacobryan764@icloud.com">Email</a>
+        <a href="https://github.com/r4zt8bsbwf-svg" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/jacob-robinson-77b7b838a/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close">Close ✕</button>
+  <img src="" alt="">
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

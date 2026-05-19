@@ -31,7 +31,7 @@
       <span class="mono" style="color: var(--ink)">01 · SubSpectra</span>
     </div>
     <h1>SubSpectra</h1>
-    <p class="tagline">An autonomous water tank inspection ROV — bringing live video, environmental data, and precise control into confined submerged environments.</p>
+    <p class="tagline">An autonomous water tank inspection ROV bringing live video, environmental data, and precise control into confined submerged environments.</p>
 
     <div class="project-meta">
       <div class="meta-item">
@@ -57,7 +57,7 @@
 <section class="prose">
   <div class="container-narrow">
     <h2>The problem</h2>
-    <p>Inspecting the inside of municipal and industrial water tanks usually means sending divers into confined, dark, sometimes hazardous spaces. SubSpectra was built to make that unnecessary — a remotely operated vehicle that gives operators live video, environmental data, and fine maneuverability without anyone ever getting wet.</p>
+    <p>Inspecting the inside of municipal and industrial water tanks usually means sending divers into confined, dark, sometimes hazardous spaces. SubSpectra was built to make that unnecessary. SubSpectra is a remotely operated vehicle that gives operators live video, environmental data, and fine maneuverability without anyone ever getting wet.</p>
 
     <div class="callout">
       The hard part wasn't any single subsystem. It was making real-time motor control, networking, computer vision, sensor calibration, and waterproofing all cooperate in one chassis.
@@ -84,20 +84,20 @@
     <p>The two communicate over USB serial using structured JSON packets. The split exists because Linux on the Pi is not deterministic and motor control needs precise timing — if the Pi lags or crashes, the Arduino keeps PWM stable.</p>
 
     <h2>Propulsion</h2>
-    <p>Eight thrusters: four large units at roughly 30° for translation and yaw, four vertical units at the corners for depth, stabilization, and roll/pitch correction. Driven through ESCs with servo-style PWM around 1500 μs neutral, 1900 μs forward, 1100 μs reverse. The control layout means the large motors handle operator-driven movement while the smaller verticals auto-level the vehicle in the background.</p>
+    <p>The propulsion system uses eight thrusters: four large angled thrusters for forward/reverse movement, strafing, and yaw rotation, and four smaller vertical thrusters at the corners for depth control and stabilization. The large thrusters are controlled through ESCs using writeMicroseconds() PWM commands from the Arduino, where 1500 μs is neutral, 2000 μs is forward thrust, and 1000 μs is reverse. The smaller vertical motors are driven through L298N H-bridge motor drivers using standard PWM speed control and directional outputs. This configuration allows the large thrusters to handle operator-controlled movement while the vertical motors continuously assist with leveling and depth stabilization in the background.</p>
 
     <h2>Sensors</h2>
     <ul>
       <li><strong>MS5837-30BA</strong> for pressure and depth, zeroed at the surface</li>
       <li><strong>DS18B20</strong> waterproof temperature sensor over OneWire</li>
-      <li><strong>DFRobot</strong> pH, TDS, and conductivity sensors — each with their own calibration routines, reference solutions, and noise filtering</li>
+      <li><strong>DFRobot</strong> pH and TDS sensors each with their own calibration routines, reference solutions, and noise filtering</li>
     </ul>
 
     <h2>Vision</h2>
     <p>An OAK-D Lite stereo camera streams live video to the operator UI over Ethernet, with an OpenCV processing pipeline for future computer vision expansion. Getting this stable meant working through USB bandwidth limitations, Pi undervoltage events under camera load, autofocus quirks, frame latency, and compression tradeoffs.</p>
 
     <h2>Operator UI</h2>
-    <p>The custom interface is built in PySide6 with PyQtGraph OpenGL for the 3D vehicle visualization. It shows live video, sensor overlays, motor outputs, latency, and operating mode (manual, stabilize, angle hold, inspection). A simulation mode lets the UI run without hardware connected — useful for iterating on layout without setting up the full rig.</p>
+    <p>The custom interface is built in PySide6 with PyQtGraph OpenGL for the 3D vehicle visualization. It shows live video, sensor overlays, motor outputs, latency, and operating mode (manual, stabilize, angle hold, inspection). A simulation mode lets the UI run without hardware connected which became useful for iterating on layout without setting up the full rig.</p>
 
     <h2>Safety & reliability</h2>
     <ul>
@@ -107,10 +107,10 @@
     </ul>
 
     <h2>Mechanical</h2>
-    <p>Waterproof PVC enclosure, acrylic viewing window, waterproof cable glands, externally mounted ESCs, PETG structural components, 3D-printed mounts. A lot of the fabrication time went into epoxy sealing, pressure resistance, waterproof connector consolidation, and routing cables so heat could still escape.</p>
+    <p>The mechanical design of SubSpectra was built around a waterproof PVC electronics enclosure integrated into a frame made from custom 3D-printed PETG structural components. The system includes an acrylic front viewing window for the camera, waterproof cable glands and connectors for power and communication lines, externally mounted ESCs to reduce internal heat buildup, and custom mounts for the thrusters and sensors. A significant portion of the fabrication process focused on waterproofing, epoxy sealing, cable routing, pressure resistance, and creating a modular structure capable of withstanding underwater operation while still allowing access for maintenance and future upgrades.</p>
 
     <h2>What this project taught me</h2>
-    <p>Most of the real work was at the seams — Pi power instability under camera load, ESC calibration, Ethernet latency, sensor calibration drift, IMU stabilization tuning, PWM debugging with an oscilloscope. Each problem touched two or three disciplines at once. The biggest takeaway: if you can't reason about hardware, firmware, networking, mechanical, and power as one system, you can't ship a vehicle that works underwater.</p>
+    <p>This project reinforced how interconnected every engineering discipline becomes in a real embedded system. Many of the biggest challenges came from integration issues such as Raspberry Pi power instability under camera load, ESC calibration, Ethernet communication latency, sensor drift, IMU stabilization tuning, and debugging PWM signals with an oscilloscope. Solving these problems required understanding hardware, firmware, networking, mechanical design, and power systems together rather than as separate subsystems. The project ultimately taught me the importance of systems-level thinking, iterative testing, and designing for reliability when building a vehicle intended to operate in harsh underwater environments.</p>
   </div>
 </section>
 

@@ -31,7 +31,7 @@
       <span class="mono" style="color: var(--ink)">02 · BrewBot</span>
     </div>
     <h1>BrewBot</h1>
-    <p class="tagline">An automated beverage preparation and dispensing machine — embedded control, custom mechanical assemblies, and programmable recipe logic.</p>
+    <p class="tagline">An automated beverage preparation and dispensing machine with embedded control, custom mechanical assemblies, and programmable recipe logic.</p>
 
     <div class="project-meta">
       <div class="meta-item">
@@ -57,10 +57,10 @@
 <section class="prose">
   <div class="container-narrow">
     <h2>The idea</h2>
-    <p>BrewBot is a beverage automation platform built to simulate a commercial drink-mixing system — consistent recipes, repeatable output, and automated cleaning. End-to-end: from CAD model to printed parts to wired controller to working hardware.</p>
+    <p>BrewBot is a beverage automation platform built to simulate a commercial drink-mixing system with consistent recipes, repeatable output, and automated cleaning. End-to-end: from CAD model to printed parts to wired controller to working hardware.</p>
 
     <div class="callout">
-      I liked this project because it touched everything — 3D modeling, part selection, 3D printing, wiring, coding, debugging. Full-stack mechanical engineering.
+      I liked this project because it touched everything — 3D modeling, part selection, 3D printing, wiring, coding, debugging. Full-stack engineering.
     </div>
 
     <h2>Mechanical</h2>
@@ -70,7 +70,7 @@
       <li>3D-printed servo mounts and dispensing assemblies</li>
       <li>Routed tubing with backflow prevention</li>
     </ul>
-    <p>The printed parts were modeled in Fusion 360 with attention to alignment tolerance, leak reduction, repeatability, and maintenance access — pieces you can disassemble without breaking the print.</p>
+    <p>The mechanical system was designed in Fusion 360 using modeled versions of the real physical components to ensure accurate fitment and tubing alignment throughout the assembly. The fluid routing system was built around a metal 8-way gang valve connected to the ingredient reservoirs and a 3-way gang valve used to direct liquid flow either to the drink output or to a waste reservoir during cleaning cycles. A peristaltic pump was positioned between the two valve assemblies so a single pump could draw liquid from any reservoir while still allowing the system to switch between dispensing and self-cleaning operations. The design process focused heavily on tubing management, alignment tolerances, leak reduction, repeatability, and creating assemblies that could be easily disassembled for maintenance without damaging the printed components.</p>
 
     <h2>Control system</h2>
     <p>A microcontroller drives valve timing, pump activation, dispensing order, and cleaning routines. The firmware runs as a state machine that steps through each recipe: open the valve, dispense for a programmed duration, stop flow, move to the next ingredient, then run a cleaning cycle when the recipe completes.</p>
@@ -84,7 +84,7 @@
     </ul>
 
     <h2>What it taught me</h2>
-    <p>Mechanical tolerances stack faster than you'd expect — a 0.2 mm gap in one mount becomes a leak two parts later. Pump timing calibration drifts with tubing fatigue, so the cleaning cycle wasn't optional, it was structural. The whole project was an exercise in integrating embedded firmware, CAD, fabrication, fluid systems, and electrical design into something that could actually run a recipe end to end.</p>
+    <p>This project taught me how important precision and system integration are in automation design. Small issues in tubing alignment, valve positioning, or pump timing could completely change how reliably the system dispensed liquids. It also showed me that designing something functional in CAD is very different from building a system that can consistently operate in the real world. BrewBot pushed me to think through mechanical design, fluid flow, embedded control, electrical wiring, and maintenance considerations all at the same time in order to create a machine that could repeatedly run full drink and cleaning cycles without failure.</p>
   </div>
 </section>
 
